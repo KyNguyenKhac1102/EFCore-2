@@ -25,7 +25,7 @@ namespace EFCore4.Services
 
             try{
                 var newProduct = new Product{
-                    Name = productDTO.Name,
+                    ProductName = productDTO.ProductName,
                     Manifacture = productDTO.Manifacture,
                     CategoryId = productDTO.CategoryId,
                 };
@@ -42,11 +42,12 @@ namespace EFCore4.Services
         public bool Update(int id, ProductDTO productDTO)
         {
             using var transaction = _productContext.Database.BeginTransaction();
+
             var productUpdate = _productContext.Products.Find(id);
-            productUpdate.Name = productDTO.Name;
+            productUpdate.ProductName = productDTO.ProductName;
             productUpdate.Manifacture = productDTO.Manifacture;
-            //if cateid not found
-            // product.CategoryId
+
+            //case not found category id
             var checkProduct = _productContext.Categories.Find(productDTO.CategoryId);
             if(checkProduct == null){
                 return false;

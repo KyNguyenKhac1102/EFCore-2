@@ -10,16 +10,16 @@ namespace EFCore4.Models
 
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder){
-            modelBuilder.Entity<Category>().Property(x => x.Id).ValueGeneratedOnAdd();
+            modelBuilder.Entity<Category>().Property(x => x.CategoryId).ValueGeneratedOnAdd();
             modelBuilder.Entity<Category>().HasMany(x => x.Product).WithOne(x => x.Category);
             modelBuilder.Entity<Category>().HasData(new Category{
-                Id = 1,
-                Name = "Category 1",
+                CategoryId= 1,
+                CategoryName = "Category 1",
             });
             modelBuilder.Entity<Product>().HasData(new Product
             {
-                Id = 1,
-                Name = "Product 1",
+                ProductId = 1,
+                ProductName = "Product 1",
                 CategoryId = 1,
             });
         }

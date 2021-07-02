@@ -8,8 +8,8 @@ namespace EFCore4.Models
     public class Category{
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key, Column(Order = 0)]
-        public int Id {get; set;}
-        public string Name {get; set;}
+        public int CategoryId {get; set;}
+        public string CategoryName {get; set;}
 
         public List<Product> Product {get; set;}
     }
